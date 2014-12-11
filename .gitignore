@@ -34,3 +34,5 @@ CVS
 *.tmp
 tmp
 classes
+*.lck
+*temp
