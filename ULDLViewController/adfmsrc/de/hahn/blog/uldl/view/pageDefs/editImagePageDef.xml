@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.60.81"
+                id="editImagePageDef" Package="de.hahn.blog.uldl.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CatalogView1" RangeSize="25" DataControl="ULDLAppModuleDataControl"
+              id="CatalogView1Iterator"/>
+    <iterator Binds="ImagesView2" RangeSize="25" DataControl="ULDLAppModuleDataControl"
+              id="ImagesView2Iterator" ChangeEventPolicy="none"/>
+  </executables>
+  <bindings>
+    <action IterBinding="CatalogView1Iterator" id="setCurrentRowWithKeyValue"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKeyValue">
+      <NamedData NDName="rowKey" NDValue="#{bindings.CatalogId}" NDType="java.lang.String"/>
+    </action>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="ULDLAppModuleDataControl"/>
+    <attributeValues IterBinding="ImagesView2Iterator" id="ImageId">
+      <AttrNames>
+        <Item Value="ImageId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ImagesView2Iterator" id="CatalogId">
+      <AttrNames>
+        <Item Value="CatalogId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ImagesView2Iterator" id="ImageName">
+      <AttrNames>
+        <Item Value="ImageName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ImagesView2Iterator" id="ContentType">
+      <AttrNames>
+        <Item Value="ContentType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ImagesView2Iterator" id="ImageData">
+      <AttrNames>
+        <Item Value="ImageData"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="ImagesView2Iterator" id="setCurrentRowWithKeyValue1"
+            InstanceName="ULDLAppModuleDataControl.ImagesView2"
+            DataControl="ULDLAppModuleDataControl" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKeyValue">
+      <NamedData NDName="rowKey" NDValue="#{bindings.ImageId}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="ImagesView2Iterator" id="Execute"
+            InstanceName="ULDLAppModuleDataControl.ImagesView2"
+            DataControl="ULDLAppModuleDataControl" RequiresUpdateModel="true"
+            Action="iteratorExecute"/>
+    <action id="Commit" InstanceName="ULDLAppModuleDataControl"
+            DataControl="ULDLAppModuleDataControl" RequiresUpdateModel="true"
+            Action="commitTransaction"/>
+  </bindings>
+</pageDefinition>

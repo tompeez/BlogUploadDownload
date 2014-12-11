@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.60.81"
+                id="catalog_task_flow_definition_catalog_task_flow_definition_CommitPageDef"
+                Package="de.hahn.blog.uldl.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="ULDLAppModuleDataControl"/>
+  </bindings>
+</pageDefinition>

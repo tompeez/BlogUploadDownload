@@ -1,0 +1,6 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ProviderSettings xmlns="http://xmlns.oracle.com/ide/hash">
+   <value n="id" v="67898c11-fa15-47b7-a201-39b9e67dc99d"/>
+   <value n="name" v="ULDLDB"/>
+   <value n="offlineDBSchema" v="HR"/>
+</ProviderSettings>

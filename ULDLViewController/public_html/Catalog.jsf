@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Catalog.jsf" id="d1">
+        <af:form id="f1" usesUpload="true">
+            <af:panelStretchLayout topHeight="50px" id="psl1">
+                <f:facet name="top">
+                    <af:outputText value="Upload Download Test" id="ot1"
+                                   inlineStyle="font-size:xx-large;"/>
+                </f:facet>
+                <f:facet name="center">
+                    <af:region value="#{bindings.catalogtaskflowdefinition1.regionModel}" id="r1"/>
+                    <!-- id="af_one_column_header_stretched"  -->
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+    </af:document>
+</f:view>

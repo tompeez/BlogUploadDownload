@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ULDLAppModule"
+  Version="11.1.2.60.81"
+  ClearCacheOnRollback="true"
+  ComponentClass="de.hahn.blog.uldl.model.facade.ULDLAppModuleImpl">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewUsage
+    Name="CatalogView1"
+    ViewObjectName="de.hahn.blog.uldl.model.dataaccess.CatalogView"/>
+  <ViewUsage
+    Name="ImagesView1"
+    ViewObjectName="de.hahn.blog.uldl.model.dataaccess.ImagesView"/>
+  <ViewUsage
+    Name="ImagesView2"
+    ViewObjectName="de.hahn.blog.uldl.model.dataaccess.ImagesView"/>
+  <ViewUsage
+    Name="ImageAccessView1"
+    ViewObjectName="de.hahn.blog.uldl.model.dataaccess.ImageAccessView"/>
+  <ViewLinkUsage
+    Name="ImagesCatalogFkLink1"
+    ViewLinkObjectName="de.hahn.blog.uldl.model.dataaccess.ImagesCatalogFkLink"
+    SrcViewUsageName="de.hahn.blog.uldl.model.facade.ULDLAppModule.CatalogView1"
+    DstViewUsageName="de.hahn.blog.uldl.model.facade.ULDLAppModule.ImagesView2"
+    Reversed="false"/>
+</AppModule>

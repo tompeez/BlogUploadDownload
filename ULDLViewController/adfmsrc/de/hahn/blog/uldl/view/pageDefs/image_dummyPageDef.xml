@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.60.81"
+                id="image_dummyPageDef" Package="de.hahn.blog.uldl.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="ImageAccessView1Iterator" Binds="ImageAccessView1"
+              DataControl="ULDLAppModuleDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <methodAction IterBinding="ImageAccessView1Iterator" id="getImageById"
+                  RequiresUpdateModel="true" Action="invokeMethod" MethodName="getImageById"
+                  IsViewObjectMethod="true" DataControl="ULDLAppModuleDataControl"
+                  InstanceName="data.ULDLAppModuleDataControl.ImageAccessView1"
+                  ReturnName="data.ULDLAppModuleDataControl.methodResults.getImageById_ULDLAppModuleDataControl_ImageAccessView1_getImageById_result">
+      <NamedData NDName="aId" NDType="oracle.jbo.domain.Number"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

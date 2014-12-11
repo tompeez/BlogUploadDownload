@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="11.1.2.60.81"
+             id="DataBindings" SeparateXMLFiles="false" Package="de.hahn.blog.uldl.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/editCatalog.jsff" usageId="de_hahn_blog_uldl_view_editCatalogPageDef"/>
+    <page path="/Catalog.jsf" usageId="de_hahn_blog_uldl_view_CatalogPageDef"/>
+    <page path="/WEB-INF/catalog-task-flow-definition.xml#catalog-task-flow-definition@CreateInsert"
+          usageId="de_hahn_blog_uldl_view_catalog_task_flow_definition_catalog_task_flow_definition_CreateInsertPageDef"/>
+    <page path="/editImage.jsff" usageId="de_hahn_blog_uldl_view_editImagePageDef"/>
+    <page path="/WEB-INF/catalog-task-flow-definition.xml#catalog-task-flow-definition@Commit"
+          usageId="de_hahn_blog_uldl_view_catalog_task_flow_definition_catalog_task_flow_definition_CommitPageDef"/>
+    <page path="/WEB-INF/catalog-task-flow-definition.xml#catalog-task-flow-definition@Delete"
+          usageId="de_hahn_blog_uldl_view_catalog_task_flow_definition_catalog_task_flow_definition_DeletePageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="de_hahn_blog_uldl_view_editCatalogPageDef"
+          path="de.hahn.blog.uldl.view.pageDefs.editCatalogPageDef"/>
+    <page id="de_hahn_blog_uldl_view_CatalogPageDef"
+          path="de.hahn.blog.uldl.view.pageDefs.CatalogPageDef"/>
+    <page id="de_hahn_blog_uldl_view_catalog_task_flow_definition_catalog_task_flow_definition_CreateInsertPageDef"
+          path="de.hahn.blog.uldl.view.pageDefs.catalog_task_flow_definition_catalog_task_flow_definition_CreateInsertPageDef"/>
+    <page id="de_hahn_blog_uldl_view_editImagePageDef"
+          path="de.hahn.blog.uldl.view.pageDefs.editImagePageDef"/>
+    <page id="de_hahn_blog_uldl_view_catalog_task_flow_definition_catalog_task_flow_definition_CommitPageDef"
+          path="de.hahn.blog.uldl.view.pageDefs.catalog_task_flow_definition_catalog_task_flow_definition_CommitPageDef"/>
+    <page id="de_hahn_blog_uldl_view_image_dummyPageDef" path="de.hahn.blog.uldl.view.pageDefs.image_dummyPageDef"/>
+    <page id="de_hahn_blog_uldl_view_catalog_task_flow_definition_catalog_task_flow_definition_DeletePageDef"
+          path="de.hahn.blog.uldl.view.pageDefs.catalog_task_flow_definition_catalog_task_flow_definition_DeletePageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="ULDLAppModuleDataControl" Package="de.hahn.blog.uldl.model.facade"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true" SupportsRangesize="true"
+                     SupportsResetState="true" SupportsSortCollection="true"
+                     Configuration="ULDLAppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

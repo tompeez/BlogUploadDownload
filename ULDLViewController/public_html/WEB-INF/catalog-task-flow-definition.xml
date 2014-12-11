@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="catalog-task-flow-definition">
+    <default-activity>editCatalog</default-activity>
+    <managed-bean id="__13">
+      <managed-bean-name>ImageBean</managed-bean-name>
+      <managed-bean-class>de.hahn.blog.uldl.view.backing.ImageBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <view id="editCatalog">
+      <page>/editCatalog.jsff</page>
+    </view>
+    <view id="editImage">
+      <page>/editImage.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Commit">
+      <method>#{bindings.Commit.execute}</method>
+      <outcome>
+        <fixed-outcome>Commit</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Delete">
+      <method>#{bindings.Delete.execute}</method>
+      <outcome>
+        <fixed-outcome>save</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>editCatalog</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>new</from-outcome>
+        <to-activity-id>CreateInsert</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__12">
+        <from-outcome>edit</from-outcome>
+        <to-activity-id>editImage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>CreateInsert</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>editImage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>editImage</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>save</from-outcome>
+        <to-activity-id>Commit</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__16">
+        <from-outcome>cancel</from-outcome>
+        <to-activity-id>editCatalog</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome>delete</from-outcome>
+        <to-activity-id>Delete</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id>Commit</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome>Commit</from-outcome>
+        <to-activity-id>editCatalog</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>Delete</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>save</from-outcome>
+        <to-activity-id>Commit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

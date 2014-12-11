@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ImagesView"
+  Version="11.1.2.60.81"
+  SelectList="Images.IMAGE_ID, 
+       Images.CATALOG_ID, 
+       Images.IMAGE_NAME, 
+       Images.CONTENT_TYPE, 
+       Images.IMAGE_DATA"
+  FromList="IMAGES Images"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <EntityUsage
+    Name="Images"
+    Entity="de.hahn.blog.uldl.model.businessobjects.Images"
+    DeleteParticipant="false"/>
+  <ViewAttribute
+    Name="ImageId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ImageId"
+    EntityUsage="Images"
+    AliasName="IMAGE_ID"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="CatalogId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CatalogId"
+    EntityUsage="Images"
+    AliasName="CATALOG_ID"/>
+  <ViewAttribute
+    Name="ImageName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ImageName"
+    EntityUsage="Images"
+    AliasName="IMAGE_NAME"/>
+  <ViewAttribute
+    Name="ContentType"
+    PrecisionRule="true"
+    EntityAttrName="ContentType"
+    EntityUsage="Images"
+    AliasName="CONTENT_TYPE"/>
+  <ViewAttribute
+    Name="ImageData"
+    IsQueriable="false"
+    PrecisionRule="true"
+    EntityAttrName="ImageData"
+    EntityUsage="Images"
+    AliasName="IMAGE_DATA"/>
+</ViewObject>

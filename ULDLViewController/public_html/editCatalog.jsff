@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelStretchLayout id="psl1">
+        <f:facet name="center">
+            <af:panelGroupLayout id="pgl1">
+                <af:panelFormLayout id="pfl1">
+                    <af:inputText value="#{bindings.CatalogId.inputValue}"
+                                  label="#{bindings.CatalogId.hints.label}"
+                                  required="#{bindings.CatalogId.hints.mandatory}"
+                                  columns="#{bindings.CatalogId.hints.displayWidth}"
+                                  maximumLength="#{bindings.CatalogId.hints.precision}"
+                                  shortDesc="#{bindings.CatalogId.hints.tooltip}" id="it1"
+                                  readOnly="true">
+                        <f:validator binding="#{bindings.CatalogId.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.CatalogId.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.CatalogName.inputValue}"
+                                  label="#{bindings.CatalogName.hints.label}"
+                                  required="#{bindings.CatalogName.hints.mandatory}"
+                                  columns="#{bindings.CatalogName.hints.displayWidth}"
+                                  maximumLength="#{bindings.CatalogName.hints.precision}"
+                                  shortDesc="#{bindings.CatalogName.hints.tooltip}" id="it2">
+                        <f:validator binding="#{bindings.CatalogName.validator}"/>
+                    </af:inputText>
+                    <f:facet name="footer">
+                        <af:panelGroupLayout layout="vertical" id="pgl2">
+                            <af:panelGroupLayout layout="horizontal" id="pgl3">
+                                <f:facet name="separator">
+                                    <af:spacer width="10" height="1" id="s1"/>
+                                </f:facet>
+                                <af:commandButton actionListener="#{bindings.First.execute}"
+                                                  text="First" disabled="#{!bindings.First.enabled}"
+                                                  partialSubmit="true" id="cb1"/>
+                                <af:commandButton actionListener="#{bindings.Previous.execute}"
+                                                  text="Previous"
+                                                  disabled="#{!bindings.Previous.enabled}"
+                                                  partialSubmit="true" id="cb2"/>
+                                <af:commandButton actionListener="#{bindings.Next.execute}"
+                                                  text="Next" disabled="#{!bindings.Next.enabled}"
+                                                  partialSubmit="true" id="cb3"/>
+                                <af:commandButton actionListener="#{bindings.Last.execute}"
+                                                  text="Last" disabled="#{!bindings.Last.enabled}"
+                                                  partialSubmit="true" id="cb4"/>
+                            </af:panelGroupLayout>
+                            <af:spacer width="10" height="10" id="s5"/>
+                            <af:panelGroupLayout id="pgl4" layout="horizontal">
+                                <af:commandButton actionListener="#{bindings.CreateInsert.execute}"
+                                                  text="New Catalog"
+                                                  disabled="#{!bindings.CreateInsert.enabled}"
+                                                  id="cb7"/>
+                                <af:spacer width="10" height="10" id="s7"/>
+                                <af:commandButton text="Delete Catalog" id="cb10"
+                                                  actionListener="#{bindings.Delete.execute}"
+                                                  partialSubmit="true"
+                                                  partialTriggers="cb1 cb2 cb3 cb4"/>
+                                <af:spacer width="10" height="10" id="s2"/>
+                                <af:commandButton text="New Image" id="cb8" action="new"/>
+                                <af:spacer width="10" height="10" id="s3"/>
+                                <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                                  text="Canel" immediate="true" id="cb6">
+                                    <af:resetActionListener/>
+                                </af:commandButton>
+                                <af:spacer width="10" height="10" id="s4"/>
+                                <af:commandButton text="Commit" id="cb9"
+                                                  actionListener="#{bindings.Commit.execute}"/>
+                            </af:panelGroupLayout>
+                            <af:spacer width="10" height="10" id="s6"/>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:panelFormLayout>
+                <af:table value="#{bindings.ImagesView2.collectionModel}" var="row"
+                          rows="#{bindings.ImagesView2.rangeSize}"
+                          emptyText="#{bindings.ImagesView2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.ImagesView2.rangeSize}" rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.ImagesView2.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.ImagesView2.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t1" columnStretching="multiple"
+                          styleClass="AFStretchWidth">
+                    <af:column sortProperty="#{bindings.ImagesView2.hints.ImageId.name}"
+                               sortable="true"
+                               headerText="#{bindings.ImagesView2.hints.ImageId.label}" id="c1">
+                        <af:outputText value="#{row.ImageId}" id="ot1">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ImagesView2.hints.ImageId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ImagesView2.hints.CatalogId.name}"
+                               sortable="true"
+                               headerText="#{bindings.ImagesView2.hints.CatalogId.label}" id="c2">
+                        <af:outputText value="#{row.CatalogId}" id="ot2">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ImagesView2.hints.CatalogId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ImagesView2.hints.ImageName.name}"
+                               sortable="true"
+                               headerText="#{bindings.ImagesView2.hints.ImageName.label}" id="c3">
+                        <af:outputText value="#{row.ImageName}" id="ot3"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ImagesView2.hints.ContentType.name}"
+                               sortable="true"
+                               headerText="#{bindings.ImagesView2.hints.ContentType.label}" id="c4">
+                        <af:outputText value="#{row.ContentType}" id="ot4"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ImagesView2.hints.ImageData.name}"
+                               sortable="false"
+                               headerText="#{bindings.ImagesView2.hints.ImageData.label}" id="c5">
+                        <af:image source="/render_image?id=#{row.ImageId}" id="i1"
+                                  shortDesc="#{row.ImageName}" inlineStyle="width:100px;"/>
+                    </af:column>
+                    <af:column sortable="false" headerText="Edit" id="c6">
+                        <af:commandButton text="Edit" id="cb5" action="edit"/>
+                    </af:column>
+                </af:table>
+            </af:panelGroupLayout>
+            <!-- id="af_one_column_stretched"   -->
+        </f:facet>
+    </af:panelStretchLayout>
+</ui:composition>

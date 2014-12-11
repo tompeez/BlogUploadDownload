@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TransferDescriptor xmlns="http://xmlns.oracle.com/jdeveloper/110000transfer-descriptor">
+   <value n="cascadeDelete" v="false"/>
+   <value n="dependencyDepth" v="0"/>
+   <value n="downgradeOK" v="true"/>
+   <value n="includeAllDependencies" v="false"/>
+   <value n="includeDependencies" v="false"/>
+   <value n="manualReconcile" v="false"/>
+   <value n="policy" v="oracle.jdevimpl.offlinedb.transfer.OffToOnPolicy"/>
+   <value n="reconcile" v="false"/>
+   <value n="replace" v="false"/>
+   <value n="schemaNames" v="false"/>
+   <list n="schemaObjectDescriptors">
+      <hash>
+         <value n="name" v="CATALOG_SEQ"/>
+         <value n="schemaName" v="HR"/>
+         <value n="type" v="SEQUENCE"/>
+      </hash>
+      <hash>
+         <value n="name" v="IMAGE_SEQ"/>
+         <value n="schemaName" v="HR"/>
+         <value n="type" v="SEQUENCE"/>
+      </hash>
+      <hash>
+         <value n="name" v="CATALOG"/>
+         <value n="schemaName" v="HR"/>
+         <value n="type" v="TABLE"/>
+      </hash>
+      <hash>
+         <value n="name" v="IMAGES"/>
+         <value n="schemaName" v="HR"/>
+         <value n="type" v="TABLE"/>
+      </hash>
+   </list>
+   <url n="sourceIdentifier" path="ULDLDB.offlinedb"/>
+   <value n="sourceProviderType" v="offlinedb"/>
+   <value n="spoolCommands" v="false"/>
+   <url n="sqlFile" path="ULDL_DB_INIT.sql"/>
+   <value n="sqlPlus" v="false"/>
+   <hash n="targets">
+      <hash n="oracle.ideimpl.db.transfer.DDLTransferTarget"/>
+   </hash>
+</TransferDescriptor>

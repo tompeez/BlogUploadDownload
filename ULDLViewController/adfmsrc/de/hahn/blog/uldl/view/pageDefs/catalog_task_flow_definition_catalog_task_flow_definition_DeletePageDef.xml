@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.60.81"
+                id="catalog_task_flow_definition_catalog_task_flow_definition_DeletePageDef"
+                Package="de.hahn.blog.uldl.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="CatalogView1" RangeSize="25" DataControl="ULDLAppModuleDataControl"
+              id="CatalogView1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="CatalogView1Iterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

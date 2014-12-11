@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.60.81"
+                id="editCatalogPageDef" Package="de.hahn.blog.uldl.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CatalogView1" RangeSize="25" DataControl="ULDLAppModuleDataControl"
+              id="CatalogView1Iterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="ImagesView2" RangeSize="25" DataControl="ULDLAppModuleDataControl"
+              id="ImagesView2Iterator" ChangeEventPolicy="ppr"/>
+  </executables>
+  <bindings>
+    <action IterBinding="CatalogView1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="ULDLAppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="ULDLAppModuleDataControl"/>
+    <attributeValues IterBinding="CatalogView1Iterator" id="CatalogId">
+      <AttrNames>
+        <Item Value="CatalogId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CatalogView1Iterator" id="CatalogName">
+      <AttrNames>
+        <Item Value="CatalogName"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="CatalogView1Iterator" id="First" RequiresUpdateModel="true"
+            Action="first"/>
+    <action IterBinding="CatalogView1Iterator" id="Previous" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="CatalogView1Iterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="CatalogView1Iterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+    <tree IterBinding="ImagesView2Iterator" id="ImagesView2">
+      <nodeDefinition DefName="de.hahn.blog.uldl.model.dataaccess.ImagesView" Name="ImagesView20">
+        <AttrNames>
+          <Item Value="ImageId"/>
+          <Item Value="CatalogId"/>
+          <Item Value="ImageName"/>
+          <Item Value="ContentType"/>
+          <Item Value="ImageData"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="CatalogView1Iterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>
