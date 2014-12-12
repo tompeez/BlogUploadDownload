@@ -51,10 +51,6 @@
     </control-flow-rule>
     <control-flow-rule id="__5">
       <from-activity-id>editImage</from-activity-id>
-      <control-flow-case id="__9">
-        <from-outcome>save</from-outcome>
-        <to-activity-id>Commit</to-activity-id>
-      </control-flow-case>
       <control-flow-case id="__16">
         <from-outcome>cancel</from-outcome>
         <to-activity-id>editCatalog</to-activity-id>
@@ -62,6 +58,10 @@
       <control-flow-case id="__6">
         <from-outcome>delete</from-outcome>
         <to-activity-id>Delete</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__17">
+        <from-outcome>save</from-outcome>
+        <to-activity-id>Commit</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__10">
