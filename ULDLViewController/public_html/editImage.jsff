@@ -43,7 +43,7 @@
                         </f:facet>
                         <af:button text="Cancel" id="cb1" action="#{ImageBean.cancel_action}" immediate="true"/>
                         <af:button text="Delete" id="cb2" action="delete"/>
-                        <af:button text="Commit" id="cb5" action="save"/>
+                        <af:button text="Commit" id="cb5" action="#{ImageBean.commit_action}"/>
                     </af:panelGroupLayout>
                 </f:facet>
             </af:panelFormLayout>

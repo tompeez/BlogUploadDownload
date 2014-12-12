@@ -47,11 +47,14 @@ public class ImageBean {
     }
 
     /**
+     * Handle cancel action
      * @return
      */
     public String cancel_action() {
-        BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();
+        // remove temporary file if present
+        deleteTemporaryFile();
 
+        BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();
         // get an ADF attributevalue from the ADF page definitions
         AttributeBinding attr = (AttributeBinding) bindings.getControlBinding("CatalogId");
         Number catalogID = (Number) attr.getInputValue();
@@ -78,6 +81,15 @@ public class ImageBean {
             return null;
         }
         return "cancel";
+    }
+
+    /**
+     * delete the temporary file if is present
+     */
+    public void deleteTemporaryFile() {
+        String tempfile = getTemporaryFileVar();
+        removeTemporaryFile(tempfile);
+        setTemporaryFileVar(null);
     }
 
     /**
@@ -122,6 +134,34 @@ public class ImageBean {
         if (attr != null) {
             attr.setInputValue(name);
         }
+    }
+
+    /**
+     * Get the temporary file name into a page variable for later use
+     * @return name of temporary file
+     */
+    private String getTemporaryFileVar() {
+        String name = null;
+        // set pathto temporary file to page variable
+        BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();
+        // get an ADF attributevalue from the ADF page definitions
+        AttributeBinding attr = (AttributeBinding) bindings.getControlBinding("TemporaryFile1");
+        if (attr != null) {
+            name = (String) attr.getInputValue();
+        }
+        return name;
+    }
+
+    /**
+     * Removes a file with the given name
+     * @param tempfile file to remove
+     */
+    private void removeTemporaryFile(String tempfile) {
+        if (tempfile == null)
+            return;
+
+        File file = FileUtils.getFile(tempfile);
+        FileUtils.deleteQuietly(file);
     }
 
 
@@ -259,5 +299,17 @@ public class ImageBean {
     public Integer getRandomVal() {
         randomVal++;
         return randomVal;
+    }
+
+
+    /**
+     * Handle commit action
+     * delete temporary file if present and navigates to the commit action
+     * @return
+     */
+    public String commit_action() {
+        // Add event code here...
+        deleteTemporaryFile();
+        return "save";
     }
 }
