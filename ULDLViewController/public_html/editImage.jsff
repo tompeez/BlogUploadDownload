@@ -27,8 +27,8 @@
                 </af:inputText>
                 <af:panelLabelAndMessage label="#{bindings.ImageData.hints.label}" id="plam3">
                     <af:spacer width="10" height="10" id="s2"/>
-                    <af:image source="/render_image?id=#{bindings.ImageId.inputValue}" id="i1" shortDesc="#{bindings.ImageName.hints.tooltip}"
-                              inlineStyle="width:200px;" partialTriggers="cb3" visible="true"/>
+                    <af:image source="/render_image?id=#{bindings.ImageId.inputValue}&amp;tmp=#{bindings.TemporaryFile1.inputValue}" id="i1"
+                              shortDesc="#{bindings.ImageName.hints.tooltip}" inlineStyle="width:200px;" partialTriggers="cb3" visible="true"/>
                     <af:spacer width="10" height="10" id="s3"/>
                     <af:button text="Download Data" id="cb3" visible="#{bindings.ImageData.inputValue ne null}" binding="#{ImageBean.downloadButton}">
                         <af:fileDownloadActionListener contentType="#{bindings.ContentType.inputValue}" filename="#{bindings.ImageName.inputValue}"

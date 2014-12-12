@@ -1,24 +1,28 @@
 package de.hahn.blog.uldl.view.backing;
 
 
+import de.hahn.blog.uldl.view.types.UploadBlob;
 import de.hahn.blog.uldl.view.util.ContentTypes;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import java.sql.SQLException;
-
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 
 import oracle.adf.model.BindingContext;
 import oracle.adf.model.binding.DCBindingContainer;
 import oracle.adf.model.binding.DCIteratorBinding;
+import oracle.adf.share.logging.ADFLogger;
 import oracle.adf.view.rich.component.rich.nav.RichButton;
+import oracle.adf.view.rich.context.AdfFacesContext;
 
 import oracle.binding.AttributeBinding;
 import oracle.binding.BindingContainer;
@@ -27,12 +31,15 @@ import oracle.binding.OperationBinding;
 import oracle.jbo.Row;
 import oracle.jbo.domain.BlobDomain;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.myfaces.trinidad.model.UploadedFile;
 import org.apache.myfaces.trinidad.util.ComponentReference;
 
 
 public class ImageBean {
+    private static ADFLogger logger = ADFLogger.createADFLogger(ImageBean.class);
     private ComponentReference downloadButton;
     private Integer randomVal = 0;
 
@@ -90,10 +97,33 @@ public class ImageBean {
         // set the file name
         newRow.setAttribute("ImageName", fileName);
         // create the BlobDomain and set it into the row
-        newRow.setAttribute("ImageData", createBlobDomain(file));
+        UploadBlob blob = createBlobDomain(file, Boolean.TRUE);
+        newRow.setAttribute("ImageData", blob.getDataBlob());
         // set the mime type
         newRow.setAttribute("ContentType", contentType);
+        String tmp = (blob.getTempFileAvailabe() ? blob.getTempFile() : null);
+        setTemporaryFileVar(tmp);
+        UIComponent ui = (UIComponent) valueChangeEvent.getSource();
+        // PPR refresh a jsf component
+        ui = ui.getParent();
+        AdfFacesContext.getCurrentInstance().addPartialTarget(ui);
+
     }
+
+    /**
+     * Set the temporary file name into a page variable for later use
+     * @param name
+     */
+    private void setTemporaryFileVar(String name) {
+        // set pathto temporary file to page variable
+        BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();
+        // get an ADF attributevalue from the ADF page definitions
+        AttributeBinding attr = (AttributeBinding) bindings.getControlBinding("TemporaryFile1");
+        if (attr != null) {
+            attr.setInputValue(name);
+        }
+    }
+
 
     /**
      * @return
@@ -107,32 +137,61 @@ public class ImageBean {
         return url;
     }
 
-    private BlobDomain createBlobDomain(UploadedFile file) {
+    private UploadBlob createBlobDomain(UploadedFile file, Boolean createTempFile) {
         // init the internal variables
         InputStream in = null;
-        BlobDomain blobDomain = null;
+        OutputStream outTmp = null;
+        UploadBlob blobDomain = null;
         OutputStream out = null;
-
+        File tempfile = null;
+        logger.info("Starting to create UploadBlog from data...");
         try {
+            logger.info("... create BlobDomain...");
+            blobDomain = new UploadBlob();
             // Get the input stream representing the data from the client
             in = file.getInputStream();
+            // if a temporary file should be created , we do this first as we can't get
+            // data data back from the blob until we commit the row. in the next step we
+            // write the upload data to a temp file and then copy it into the blob
+            if (createTempFile) {
+                logger.info("... Creating temporary file...");
+                File tempdir = FileUtils.getTempDirectory();
+                String ext = FilenameUtils.getExtension(file.getFilename());
+                if (!ext.isEmpty()) {
+                    ext = "." + ext;
+                }
+                logger.info("... set extension to " + ext + "...");
+                tempfile = File.createTempFile("upl", ext, tempdir);
+                logger.info("... " + tempfile.getAbsolutePath() + "...");
+                // set path to temporary file
+                blobDomain.setTempFile(tempfile.getAbsolutePath());
+                FileOutputStream fileOutputStream = FileUtils.openOutputStream(tempfile);
+                logger.info("... copy data to temporary file...");
+                IOUtils.copy(in, fileOutputStream);
+                in = FileUtils.openInputStream(tempfile);
+                logger.info("... set inputstream for blog to temporary file...");
+            }
             // create the BlobDomain datatype to store the data in the db
-            blobDomain = new BlobDomain();
+            blobDomain.setInageBlob(new BlobDomain());
             // get the outputStream for hte BlobDomain
-            out = blobDomain.getBinaryOutputStream();
+            out = blobDomain.getDataBlob().getBinaryOutputStream();
             // copy the input stream into the output stream
+            logger.info("... copy data to BlobDomain ...");
             /*
              * IOUtils is a class from the Apache Commons IO Package (http://www.apache.org/)
              * Here version 2.0.1 is used
              * please download it directly from http://projects.apache.org/projects/commons_io.html
              */
             IOUtils.copy(in, out);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.fillInStackTrace();
+            logger.info("... Finished OK");
+        } catch (Exception e) {
+            logger.severe("Error!", e);
+            if (tempfile != null) {
+                // delete temp file on exception but don'T throw one if there is another exception
+                logger.info("Deleted temporary file " + tempfile.getAbsolutePath());
+                FileUtils.deleteQuietly(tempfile);
+            }
         }
-
         // return the filled BlobDomain
         return blobDomain;
     }
