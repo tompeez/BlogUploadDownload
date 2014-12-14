@@ -284,11 +284,19 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <url n="id" path="../../../../../jdev/jdev_system/12.1.3.0.0/system12.1.3.0.41.140521.1008/o.jdeveloper/ADF_SRC_12.1.3.library"/>
+            <url n="id" protocol="file" path="/jdev/jdev_system/12.1.3.0.0/system12.1.3.0.41.140521.1008/o.jdeveloper/ADF_SRC_12.1.3.library"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <url n="id" path="../../../../../jdev/jdev_system/12.1.3.0.0/system12.1.3.0.41.140521.1008/o.jdeveloper/commons-io-2.4.library"/>
+            <url n="id" protocol="file" path="/jdev/jdev_system/12.1.3.0.0/system12.1.3.0.41.140521.1008/o.jdeveloper/commons-io-2.4.library"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <url n="id" protocol="file" path="/R:/Java/12.1.3.0.0/Oracle/Middleware/jdeveloper/system/system12.1.3.0.41.140521.1008/o.jdeveloper/ADF_SRC.library"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <url n="id" protocol="file" path="/R:/Java/12.1.3.0.0/Oracle/Middleware/jdeveloper/system/system12.1.3.0.41.140521.1008/o.jdeveloper/Apache Commons IO.library"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
@@ -402,11 +410,19 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <url n="id" path="../../../../../jdev/jdev_system/12.1.3.0.0/system12.1.3.0.41.140521.1008/o.jdeveloper/ADF_SRC_12.1.3.library"/>
+            <url n="id" protocol="file" path="/jdev/jdev_system/12.1.3.0.0/system12.1.3.0.41.140521.1008/o.jdeveloper/ADF_SRC_12.1.3.library"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <url n="id" path="../../../../../jdev/jdev_system/12.1.3.0.0/system12.1.3.0.41.140521.1008/o.jdeveloper/commons-io-2.4.library"/>
+            <url n="id" protocol="file" path="/jdev/jdev_system/12.1.3.0.0/system12.1.3.0.41.140521.1008/o.jdeveloper/commons-io-2.4.library"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <url n="id" protocol="file" path="/R:/Java/12.1.3.0.0/Oracle/Middleware/jdeveloper/system/system12.1.3.0.41.140521.1008/o.jdeveloper/ADF_SRC.library"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <url n="id" protocol="file" path="/R:/Java/12.1.3.0.0/Oracle/Middleware/jdeveloper/system/system12.1.3.0.41.140521.1008/o.jdeveloper/Apache Commons IO.library"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
