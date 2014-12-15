@@ -121,13 +121,13 @@
   <servlet>
     <display-name>Image</display-name>
     <servlet-name>ImageServletRootApp</servlet-name>
-    <servlet-class>de.hahn.blog.uldl.view.frkext.servlet.ImageServletRooAppModule</servlet-class>
+    <servlet-class>de.hahn.blog.uldl.view.frkext.ImageServletRooAppModule</servlet-class>
     <load-on-startup>100</load-on-startup>
   </servlet>
   <servlet>
     <display-name>ImageServlet</display-name>
     <servlet-name>ImageServlet</servlet-name>
-    <servlet-class>de.hahn.blog.uldl.view.frkext.servlet.ImageServlet</servlet-class>
+    <servlet-class>de.hahn.blog.uldl.view.frkext.ImageServlet</servlet-class>
     <load-on-startup>100</load-on-startup>
   </servlet>
   <servlet-mapping>

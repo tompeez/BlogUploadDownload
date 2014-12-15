@@ -31,41 +31,30 @@
                                 <f:facet name="separator">
                                     <af:spacer width="10" height="1" id="s1"/>
                                 </f:facet>
-                                <af:commandButton actionListener="#{bindings.First.execute}"
-                                                  text="First" disabled="#{!bindings.First.enabled}"
-                                                  partialSubmit="true" id="cb1"/>
-                                <af:commandButton actionListener="#{bindings.Previous.execute}"
-                                                  text="Previous"
-                                                  disabled="#{!bindings.Previous.enabled}"
-                                                  partialSubmit="true" id="cb2"/>
-                                <af:commandButton actionListener="#{bindings.Next.execute}"
-                                                  text="Next" disabled="#{!bindings.Next.enabled}"
-                                                  partialSubmit="true" id="cb3"/>
-                                <af:commandButton actionListener="#{bindings.Last.execute}"
-                                                  text="Last" disabled="#{!bindings.Last.enabled}"
-                                                  partialSubmit="true" id="cb4"/>
+                                <af:button actionListener="#{bindings.First.execute}" text="First" disabled="#{!bindings.First.enabled}" partialSubmit="true"
+                                           id="cb1"/>
+                                <af:button actionListener="#{bindings.Previous.execute}" text="Previous" disabled="#{!bindings.Previous.enabled}"
+                                           partialSubmit="true" id="cb2"/>
+                                <af:button actionListener="#{bindings.Next.execute}" text="Next" disabled="#{!bindings.Next.enabled}" partialSubmit="true"
+                                           id="cb3"/>
+                                <af:button actionListener="#{bindings.Last.execute}" text="Last" disabled="#{!bindings.Last.enabled}" partialSubmit="true"
+                                           id="cb4"/>
                             </af:panelGroupLayout>
                             <af:spacer width="10" height="10" id="s5"/>
                             <af:panelGroupLayout id="pgl4" layout="horizontal">
-                                <af:commandButton actionListener="#{bindings.CreateInsert.execute}"
-                                                  text="New Catalog"
-                                                  disabled="#{!bindings.CreateInsert.enabled}"
-                                                  id="cb7"/>
+                                <af:button actionListener="#{bindings.CreateInsert.execute}" text="New Catalog" disabled="#{!bindings.CreateInsert.enabled}"
+                                           id="cb7"/>
                                 <af:spacer width="10" height="10" id="s7"/>
-                                <af:commandButton text="Delete Catalog" id="cb10"
-                                                  actionListener="#{bindings.Delete.execute}"
-                                                  partialSubmit="true"
-                                                  partialTriggers="cb1 cb2 cb3 cb4"/>
+                                <af:button text="Delete Catalog" id="cb10" actionListener="#{bindings.Delete.execute}" partialSubmit="true"
+                                           partialTriggers="cb1 cb2 cb3 cb4"/>
                                 <af:spacer width="10" height="10" id="s2"/>
-                                <af:commandButton text="New Image" id="cb8" action="new"/>
+                                <af:button text="New Image" id="cb8" action="new"/>
                                 <af:spacer width="10" height="10" id="s3"/>
-                                <af:commandButton actionListener="#{bindings.Rollback.execute}"
-                                                  text="Canel" immediate="true" id="cb6">
+                                <af:button actionListener="#{bindings.Rollback.execute}" text="Canel" immediate="true" id="cb6">
                                     <af:resetActionListener/>
-                                </af:commandButton>
+                                </af:button>
                                 <af:spacer width="10" height="10" id="s4"/>
-                                <af:commandButton text="Commit" id="cb9"
-                                                  actionListener="#{bindings.Commit.execute}"/>
+                                <af:button text="Commit" id="cb9" actionListener="#{bindings.Commit.execute}"/>
                             </af:panelGroupLayout>
                             <af:spacer width="10" height="10" id="s6"/>
                         </af:panelGroupLayout>
@@ -112,7 +101,7 @@
                                   shortDesc="#{row.ImageName}" inlineStyle="width:100px;"/>
                     </af:column>
                     <af:column sortable="false" headerText="Edit" id="c6">
-                        <af:commandButton text="Edit" id="cb5" action="edit"/>
+                        <af:button text="Edit" id="cb5" action="edit"/>
                     </af:column>
                 </af:table>
             </af:panelGroupLayout>

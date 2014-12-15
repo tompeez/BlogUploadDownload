@@ -1,9 +1,8 @@
-package de.hahn.blog.uldl.view.frkext.servlet;
+package de.hahn.blog.uldl.view.frkext;
 
 
 import de.hahn.blog.uldl.model.dataaccess.common.ImageAccessView;
 import de.hahn.blog.uldl.model.dataaccess.common.ImageAccessViewRow;
-import de.hahn.blog.uldl.model.facade.ULDLAppModuleImpl;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -29,7 +28,7 @@ import org.apache.commons.io.IOUtils;
 public class ImageServletRooAppModule
     extends HttpServlet
 {
-    @SuppressWarnings("compatibility:6459534029753557518")
+    @SuppressWarnings("compatibility:-628571030755457470")
     private static final long serialVersionUID = 1L;
     protected transient ADFLogger mLogger =
         ADFLogger.createADFLogger(ImageServletRooAppModule.class);
@@ -55,7 +54,6 @@ public class ImageServletRooAppModule
             {
                 am = Configuration.createRootApplicationModule(appModuleName, appModuleConfig);
                 sb.append("ImageServletRooAppModule ").append(appModuleName);
-                ULDLAppModuleImpl amULDL = (ULDLAppModuleImpl) am;
                 vo = am.findViewObject("ImageAccessView1");
                 if (vo == null)
                 {
@@ -82,7 +80,7 @@ public class ImageServletRooAppModule
                 {
                     // We assume the Blob to be the first a field
                     image = imageRow.getImageData();
-                    mimeType = (String) imageRow.getContentType();
+                    mimeType = imageRow.getContentType();
                 }
                 else
                 {

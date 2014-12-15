@@ -16,9 +16,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">374.08325</property>
+         name="y">469.1145</property>
       <property
-         name="x">439.01758</property>
+         name="x">290.01758</property>
    </MethodCall>
    <View
       id="View3">
@@ -77,7 +77,7 @@
       <property
          name="fromOutcome">new</property>
       <property
-         name="sdm:polyPoints">R38,232.53516,228.42905,391.0498,83.14943,L50</property>
+         name="sdm:polyPoints">R42,232.53516,231.92905,391.0498,83.14943,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -87,17 +87,7 @@
       <property
          name="fromOutcome">Commit</property>
       <property
-         name="sdm:polyPoints">L50,398.01758,373.73267,232.53516,249.42905,R62</property>
-   </ControlFlowCase>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase8"
-      from="View3"
-      to="MethodCall2">
-      <property
-         name="fromOutcome">save</property>
-      <property
-         name="sdm:polyPoints">L62,626.56445,246.30698,480.01758,370.23267,R46</property>
+         name="sdm:polyPoints">T50,290.01758,414.76392,191.53516,292.92905,B50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -107,7 +97,7 @@
       <property
          name="fromOutcome">cancel</property>
       <property
-         name="sdm:polyPoints">L54,625.2691,239.30698,233.93816,242.42905,R54</property>
+         name="sdm:polyPoints">L46,625.321,232.30698,233.94989,238.92905,R50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -127,39 +117,49 @@
       <property
          name="fromOutcome">edit</property>
       <property
-         name="sdm:polyPoints">R46,233.91034,235.42905,625.2414,232.30698,L46</property>
+         name="sdm:polyPoints">R58,234.0089,245.92905,625.3798,239.30698,L54</property>
    </ControlFlowCase>
-   <MethodCall
-      id="MethodCall12">
-      <property
-         name="activityId">Delete</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>Delete&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
-      <property
-         name="exceptionHandler">false</property>
-      <property
-         name="y">363.74707</property>
-      <property
-         name="x">667.5</property>
-   </MethodCall>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase13"
       from="View3"
-      to="MethodCall12">
+      to="MethodCall16">
       <property
          name="fromOutcome">delete</property>
       <property
-         name="sdm:polyPoints">B50,667.56445,289.80698,667.5,309.39648,T50</property>
+         name="sdm:polyPoints">B50,667.56445,289.80698,665.5,415.44824,T50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase14"
-      from="MethodCall12"
+      from="MethodCall16"
       to="MethodCall2">
       <property
          name="fromOutcome">save</property>
       <property
-         name="sdm:polyPoints">L50,626.5,363.39648,481.464,377.23267,R54</property>
+         name="sdm:polyPoints">L50,624.5,469.44824,332.1896,472.26392,R54</property>
    </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase17"
+      from="View3"
+      to="MethodCall2">
+      <property
+         name="fromOutcome">save</property>
+      <property
+         name="sdm:polyPoints">L62,626.56445,246.30698,331.01758,465.26392,R46</property>
+   </ControlFlowCase>
+   <MethodCall
+      id="MethodCall16">
+      <property
+         name="activityId">DeleteImage</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>DeleteImage&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">469.79883</property>
+      <property
+         name="x">665.5</property>
+   </MethodCall>
 </SDM>

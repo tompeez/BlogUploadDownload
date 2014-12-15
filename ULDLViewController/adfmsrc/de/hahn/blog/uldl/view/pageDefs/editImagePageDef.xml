@@ -3,7 +3,9 @@
                 id="editImagePageDef" Package="de.hahn.blog.uldl.view.pageDefs">
   <parameters/>
   <executables>
-    <variableIterator id="variables"/>
+    <variableIterator id="variables">
+      <variable Name="TemporaryFile" Type="java.lang.String"/>
+    </variableIterator>
     <iterator Binds="CatalogView1" RangeSize="25" DataControl="ULDLAppModuleDataControl"
               id="CatalogView1Iterator"/>
     <iterator Binds="ImagesView2" RangeSize="25" DataControl="ULDLAppModuleDataControl"
@@ -54,5 +56,10 @@
     <action id="Commit" InstanceName="ULDLAppModuleDataControl"
             DataControl="ULDLAppModuleDataControl" RequiresUpdateModel="true"
             Action="commitTransaction"/>
+    <attributeValues IterBinding="variables" id="TemporaryFile1">
+      <AttrNames>
+        <Item Value="TemporaryFile"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>
